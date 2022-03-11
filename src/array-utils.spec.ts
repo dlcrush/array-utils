@@ -12,4 +12,20 @@ describe('array-utils', () => {
       expect(ArrayUtils.first([])).not.toBeDefined();
     });
   });
+
+  describe('chunk', () => {
+    it('chunks an array', () => {
+      const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+      const result = ArrayUtils.chunk(arr, 3);
+
+      expect(result).toEqual([['a', 'b', 'c'], ['d', 'e', 'f'], ['g']]);
+    });
+
+    it('throws an error if chunkSize is less than 1', () => {
+      const arr = ['a', 'b', 'c'];
+
+      expect(() => ArrayUtils.chunk(arr, 0)).toThrow();
+    });
+  });
 });
